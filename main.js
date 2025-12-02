@@ -109,11 +109,26 @@ $(document).ready(function () {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
     });
-  }, { threshold: 0.18 });
+  }, { threshold: 0.05 });
 
   const elements = document.querySelectorAll(
     '.container, .main-text, h2, h3, h4, .project-card, .pub-item, section'
   );
 
   elements.forEach(el => observer.observe(el));
+
+  
+
 })();
+
+$('#nav-toggle').on('click', function() {
+  $(this).toggleClass('open');
+  $('.nav-right').toggleClass('active');
+});
+
+$('.nav-right a').on('click', function () {
+  if ($('.nav-right').hasClass('active')) {
+    $('.nav-right').removeClass('active');
+    $('#nav-toggle').removeClass('open');
+  }
+});
